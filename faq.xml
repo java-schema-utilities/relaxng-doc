@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- This DOCTYPE is to make ID/IDREF work. -->
+<!DOCTYPE article [
+<!-- ELEMENT declarations work around MSXML bug. -->
+<!ELEMENT qandaentry ANY>
+<!ATTLIST qandaentry id ID #IMPLIED>
+]>
+<article class="faq">
+<title>Frequently Asked Questions about RELAX NG</title>
+
+<qandaset>
+
+<qandaentry>
+<question><para>Why does RELAX NG use an XML syntax?</para></question>
+<answer><para>(An example of how to mark up an answer.)</para></answer>
+</qandaentry>
+
+<qandaentry>
+<question><para>Why is RELAX NG so verbose?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>What about entity declarations? Why doesn't RELAX NG
+allow me to declare entities? What do I do if I need to declare an
+entity?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>What about notation declarations? Why doesn't RELAX NG
+allow me to declare notations? What do I do if I need to declare a
+notation?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>Why doesn't RELAX NG do type assignment?  How can I
+use RELAX NG if I want to do schema-based type
+assignment?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>How can I do data-binding with RELAX
+NG?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>Why should I care about RELAX NG when I have
+DTDs?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>What about ID/IDREF? Why doesn't RELAX NG do ID/IDREF?
+What do I do if I need ID/IDREF?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>Why doesn't RELAX NG provide a feature like key,
+keyRef in XML Schema? What do I do if I need this
+functionality?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>Why doesn't RELAX NG provide a
+<literal>documentation</literal> element?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>I read that RELAX NG is based on "regular tree
+languages"? What's that all about? Does it have any practical
+benefits?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>Why does RELAX NG base itself on grammars?  Isn't a
+constraint-based approach like Schematron more
+powerful?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>What about the XML Schema
+<literal>processContents="strict|lax|skip"</literal> feature? How can
+I do this in RELAX NG?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>What about exclusions (as in SGML)? Why doesn't RELAX
+NG support exclusions? What do I do if I need this
+functionality?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>Why doesn't RELAX NG support minOccurs/maxOccurs as
+XML Schema?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>(Something about namespaces.  Why does RELAX NG take
+the approach that it does? How does RELAX Namespace fit in? Compare
+with W3C Schema approach.)</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>(Something about attribute/element content
+models.)</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>I read that, unlike DTDs and XML Schema, RELAX NG does
+not prohibit ambiguous content models? Does this have any practical
+benefit?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>What's the use of the <literal>interleave</literal>
+element in RELAX NG?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>What's the use of the <literal>parentRef</literal>
+element in RELAX NG?  What's the use of nested
+grammars?</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>What's the use of the <literal>combine</literal> attribute in RELAX
+NG?</para></question>
+</qandaentry>
+
+</qandaset>
+
+</article>
