@@ -8,7 +8,7 @@
 <article class="faq">
 <articleinfo>
 	<title>Frequently Asked Questions about RELAX NG</title>
-	<releaseinfo>$Revision: 1.5 $</releaseinfo>
+	<releaseinfo>$Revision: 1.6 $</releaseinfo>
 </articleinfo>
 
 <qandaset>
@@ -20,10 +20,20 @@
 
 <qandaentry>
 <question><para>Why does RELAX NG use an XML syntax?</para></question>
+<answer><para>
+	Seriously, is there any other choice?
+</para><para>
+	If you don't want to write RELAX NG in XML syntax, there is <ulink href="http://thaiopensource.com/relaxng/nonxml/">a tool by James Clark</ulink> that allows you to write RELAX NG schema in non-XML syntax and that tool will convert it to XML syntax for you.
+</para></answer>
 </qandaentry>
 
 <qandaentry>
 <question><para>Why is RELAX NG so verbose?</para></question>
+<answer>
+	<para>
+		If you find it too verbose for hand writing, there are tools that let you write one in more concise syntax. Check out the tools section.
+	</para>
+</answer>
 </qandaentry>
 
 <qandaentry>
@@ -46,6 +56,9 @@ assignment?</para></question>
 	Actually you can do the type assignment if you use a tool that supports it.
 	For example, Sun Multi-Schema XML Validator supports the type assignment.
 </para></answer>
+<answer><para>
+	Since RELAX NG allows ambiguous grammars, type-assignment is not always possible. And in some other cases, type-assignment is possible but needs multiple passes. That's one of the reasons why we don't have type-assignment in our core spec.
+</para></answer>
 </qandaentry>
 
 <qandaentry>
@@ -53,7 +66,7 @@ assignment?</para></question>
 NG?</para></question>
 <answer><para>
 	There are not many, but there certainly exists tools for data-binding.
-	For one, you can use Relaxer.
+	For one, you can use Relaxer. Check out the tools section for more.
 </para></answer>
 </qandaentry>
 
@@ -76,6 +89,52 @@ functionality?</para></question>
 <qandaentry>
 <question><para>Why doesn't RELAX NG provide a
 <literal>documentation</literal> element?</para></question>
+<answer>
+	<para>
+		If you want to write documentation in RELAX NG schema, you can do it by simply using a namespace of your choice, like this:
+	</para>
+	<programlisting><![CDATA[
+<element xmlns:doc="my:own:choice:of:namespace:URI">
+  <anyName/>
+  <doc:document>
+    Here is my documentation
+  </doc:document>
+  ...
+</element>
+	]]></programlisting>
+	<para>
+		RELAX NG allows you to write any elements and attributes to anywhere as long as it belongs to the namespace other than the RELAX NG namespace. So the above is completely legal.
+	</para><para>
+		Or another way to do this is to use elements of XHTML, DocBook, TEI or whatsoever.
+		In this way, you can format your documents quite nicely.
+	</para>
+	<programlisting><![CDATA[
+<element xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <anyName/>
+  <xhtml:div>
+    <xhtml:h1>Overview of this element</xhtml:h1>
+    <xhtml:p>This element is used to do some craptacular thing</xhtml:p>
+  </xhtml:div>
+  ...
+</element>
+	]]></programlisting>
+	<para>
+		If you are looking for a plain simple text-only documentation, then you may want to use the documentation tag specified in the "RELAX NG DTD compatibility specification". No, you don't need to read the spec. Just use the <literal>documentation</literal> element in the
+		<literal>http://relaxng.org/ns/annotation/0.9</literal> namespace. For example,
+	</para>
+	<programlisting><![CDATA[
+<element xmlns:a="http://relaxng.org/ns/annotation/0.9">
+  <anyName/>
+  <a:documentation>
+    This element is used to save the world from starvation.
+  </a:documentation>
+  ...
+</element>
+	]]></programlisting>
+	<para>
+		As I wrote earlier, you can write this element anywhere in the schema.
+	</para>
+</answer>
 </qandaentry>
 
 <qandaentry>
@@ -106,6 +165,15 @@ benefits?</para></question>
 <question><para>Why does RELAX NG base itself on grammars?  Isn't a
 constraint-based approach like Schematron more
 powerful?</para></question>
+
+<answer>
+	<para>
+		One answer to this question is, the grammar-based approach is well-studied by scientists and (therefore) the validation is relatively fast.
+	</para>
+	<para>
+		Also, there will be tools available which let you combine RELAX NG and Schematron. Check out the tools section.
+	</para>
+</answer>
 </qandaentry>
 
 <qandaentry>
