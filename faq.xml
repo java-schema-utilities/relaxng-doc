@@ -79,7 +79,25 @@ functionality?</para></question>
 <question><para>I read that RELAX NG is based on "regular tree
 languages"? What's that all about? Does it have any practical
 benefits?</para></question>
+<answer>
+	<para>
+		As long as you are using RELAX NG, you don't need to know anything
+		about those geeky stuff. But yes, it does have several practical
+		benefits.
+	</para>
+	<orderedlist>
+		<listitem><para>
+			The validation algorithm becomes simple because this theory is 
+			well-studied. This contributes to make validators smaller and faster.
+		</para></listitem>
+		<listitem><para>
+			It enables static analysis of schemas: is anything allowed by one schema
+			also allowed by another schema?
+		</para></listitem>
+	</orderedlist>
+</answer>
 </qandaentry>
+
 
 <qandaentry>
 <question><para>Why does RELAX NG base itself on grammars?  Isn't a
@@ -91,6 +109,33 @@ powerful?</para></question>
 <question><para>What about the XML Schema
 <literal>processContents="strict|lax|skip"</literal> feature? How can
 I do this in RELAX NG?</para></question>
+<answer>
+	<para>
+		There is no special primitive for the wild card in RELAX NG, but you
+		can use the "name class" to achieve the same effect. 
+	</para><para>
+		Generally, "skip" is easy to mimic, but "strict" and "lax" are hard.
+		For example, the following pattern corresponds with:
+	</para>
+	<programlisting><![CDATA[<any processContents="skip" namespace="##other"/>]]></programlisting>
+<programlisting><![CDATA[
+<define name="wildcard.skipOther">
+  <element>
+    <anyName>
+      <except><nsName/></except>
+    </anyName>
+    
+    <zeroOrMore>
+      <choice>
+        <text/>
+        <attribute><anyName/></attribute>
+        <ref name="wildcard.skipOther"/>
+      </choice>
+    </zeroOrMore>
+  </element>
+</define>
+]]></programlisting>
+</answer>
 </qandaentry>
 
 <qandaentry>
@@ -102,6 +147,15 @@ functionality?</para></question>
 <qandaentry>
 <question><para>Why doesn't RELAX NG support minOccurs/maxOccurs as
 XML Schema?</para></question>
+<answer>
+	<para>
+		If you really want to use minOccurs/maxOccurs, you can use
+		a tool like
+		<ulink href="http://www.geocities.com/kohsukekawaguchi/relaxng/shorthand/ShortRNG.html"
+			>this</ulink>, which recognizes
+		minOccurs/maxOccurs and expand it to the normal RELAX NG syntax.
+	</para>
+</answer>
 </qandaentry>
 
 <qandaentry>
@@ -124,6 +178,27 @@ benefit?</para></question>
 <qandaentry>
 <question><para>What's the use of the <literal>interleave</literal>
 element in RELAX NG?</para></question>
+<answer>
+	<para>
+		One of the frequent use would be to implement an unordered content model
+		( XML Schema's &lt;all&gt; particle.)
+	</para><para>
+		Another nice technique is to implement a "set" of tokens.
+	</para>
+<programlisting><![CDATA[
+<list>
+  <interleave>
+    <optional>
+      <value>abc</value>
+    </optional><optional>
+      <value>def</value>
+    </optional><optional>
+      <value>ghi</value>
+    </optional>
+  </interleave>
+</list>
+]]></programlisting>
+</answer>
 </qandaentry>
 
 <qandaentry>
@@ -135,6 +210,52 @@ grammars?</para></question>
 <qandaentry>
 <question><para>What's the use of the <literal>combine</literal> attribute in RELAX
 NG?</para></question>
+<answer>
+	<para>
+		Practically, <literal>combine="choice"</literal> and
+		<literal>combine="interleave"</literal> serve two
+		completely different purposes.
+	</para>
+	<itemizedlist>
+		<listitem>
+			<para>
+				One of the use case of <literal>combine="choice"</literal> is
+				to create an implicit "class" of elements.
+			</para>
+			<programlisting><![CDATA[
+<define name="inline.class" combine="choice">
+  <element name="b"> ... </element>
+</define>
+
+<define name="inline.class" combine="choice">
+  <element name="i"> ... </element>
+</define>
+]]></programlisting>
+			<para>
+				In this way, each element can collaboratively form a class of elements,
+				without any central control. This is useful when writing a modularized schema.
+			</para>
+		</listitem><listitem>
+			<para>
+				Another common use of <literal>combine="choice"</literal> is
+				to extend an already defined "class" of elements.
+			</para>
+			<programlisting><![CDATA[
+<define name="list.class">
+  <choice>
+    <ref name="dl"/>
+    <ref name="ul"/>
+    <ref name="ol"/>
+  </choice>
+</define>
+
+<define name="list.class" combine="choice">
+  <ref name="xl"/>
+</define>		
+			]]></programlisting>
+		</listitem>
+	</itemizedlist>
+</answer>
 </qandaentry>
 
 <qandaentry>
