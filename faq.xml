@@ -11,8 +11,12 @@
 <qandaset>
 
 <qandaentry>
+<question><para>How is "RELAX NG" pronounced?</para></question>
+<answer><para>It's pronounced "relaxing".</para></answer>
+</qandaentry>
+
+<qandaentry>
 <question><para>Why does RELAX NG use an XML syntax?</para></question>
-<answer><para>(An example of how to mark up an answer.)</para></answer>
 </qandaentry>
 
 <qandaentry>
