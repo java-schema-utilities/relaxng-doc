@@ -39,11 +39,19 @@ notation?</para></question>
 <question><para>Why doesn't RELAX NG do type assignment?  How can I
 use RELAX NG if I want to do schema-based type
 assignment?</para></question>
+<answer><para>
+	Actually you can do the type assignment if you use a tool that supports it.
+	For example, Sun Multi-Schema XML Validator supports the type assignment.
+</para></answer>
 </qandaentry>
 
 <qandaentry>
 <question><para>How can I do data-binding with RELAX
 NG?</para></question>
+<answer><para>
+	There are not many, but there certainly exists tools for data-binding.
+	For one, you can use Relaxer.
+</para></answer>
 </qandaentry>
 
 <qandaentry>
@@ -129,6 +137,61 @@ grammars?</para></question>
 NG?</para></question>
 </qandaentry>
 
+<qandaentry>
+<question><para>
+	What's the difference between the <literal>empty</literal> pattern and
+	the <literal>notAllowed</literal> pattern?
+</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>
+	Why do I need RELAX NG, when W3C XML Schema is there?
+</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>
+	Why doesn't RELAX NG modify the infoset?
+</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>
+	I want to specify the default attribute value. How can I do that?
+</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>
+	How can I express the concept of the inheritance?
+</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>
+	How/where can I learn more about RELAX NG?
+</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>
+	What kind of tools are available now?
+</para></question>
+</qandaentry>
+
+<qandaentry>
+<question><para>
+What is the relationship between RELAX/TREX and RELAX NG
+</para></question>
+</qandaentry>
+
+<!-- template
+<qandaentry>
+<question><para>
+</para></question>
+</qandaentry>
+-->
 </qandaset>
 
 </article>
