@@ -8,7 +8,7 @@
 <article class="faq">
 <articleinfo>
 	<title>Frequently Asked Questions about RELAX NG</title>
-	<releaseinfo>$Revision: 1.6 $</releaseinfo>
+	<releaseinfo>$Revision: 1.7 $</releaseinfo>
 </articleinfo>
 
 <qandaset>
@@ -33,6 +33,40 @@
 	<para>
 		If you find it too verbose for hand writing, there are tools that let you write one in more concise syntax. Check out the tools section.
 	</para>
+</answer>
+<answer>
+	<para>
+		Compared to DTD syntax all XML based schema is more
+		verbose.
+	</para><para>
+		Comparing
+	</para>
+<programlisting><![CDATA[<!ELEMENT foobar ( A, ( B | C )+, D) >]]></programlisting>
+	<para>
+		to its equivalent is always going to be more verbose.
+		As with everything the trade-offs bring advantages.
+		RELAX is much more expressive than DTD, and also
+		fixes the omissions and limitations in DTD.  The price
+		is that you have to accept more syntax.
+	</para><para>
+		However, notice that well written and indented RELAX is
+		vastly more readable and significantly less verbose than
+		the equivalent W3C Schema offering.
+	</para><para>
+		Verbose tends to one of those subjective issues, but on
+		the whole we feel that RELAX offers a good balance and
+		is not excessive.
+	</para>
+</answer>
+<answer>
+	<para>
+		RELAX NG heavily uses elements for representing patterns.
+		This approach makes RELAX NG simple but verbose.
+		Feedback from schema authors is very welcome.
+		In addition to the standard syntax, there are some proposals
+		and implementations for more concise syntax (see the tools section).
+	</para>
+	<!--  I am wondering if <optionalAttribute> is a useful syntax sugar.  -->
 </answer>
 </qandaentry>
 
@@ -340,6 +374,31 @@ NG?</para></question>
 <question><para>
 	Why do I need RELAX NG, when W3C XML Schema is there?
 </para></question>
+<answer>
+	<para>
+		Consider why most people prefer to drive cars, even though
+		they could all be buying Hummers instead, after all Hummers
+		are now available.
+	</para><para>
+		A cursory inspection of the requirements specification for
+		W3C Schema gives a good sense of how RELAX is designed
+		to fulfil a clear mission that is concise and descrete.
+	</para><para>
+		By limiting the scope to structure definitions, RELAX avoids 
+		the drawbacks of W3C Schema, giving a much more 
+		elegant and predictable toolset.
+	</para><para>
+		A further issue with W3C Schema is implementation 
+		consistency.  With a large and complex specification 
+		behaviour of the software implementations is an impediment
+		to consistent deployment.  Something you program into
+		your schema may not behave as you intended on certain
+		of your customer environments and vice versa.
+	</para><para>
+		A simpler specification reduces the risks and gives a
+		more reliable business deployment.
+	</para>
+</answer>
 </qandaentry>
 
 <qandaentry>
@@ -358,6 +417,21 @@ NG?</para></question>
 <question><para>
 	How can I express the concept of the inheritance?
 </para></question>
+<answer>
+	<para>
+		Here is a
+		<ulink href="http://www.asahi-net.or.jp/~eb2m-mrt/oo.html">
+		proposal by MURATA Makoto</ulink>
+		for capturing inheritance in RELAX NG.
+	</para>
+</answer>
+<answer>
+	<para>
+		One way to do this is to invent a new syntax of RELAX NG that has
+		OO-fravor, and make it convertible to normal RELAX NG.
+		In fact, there are tools that do this.
+	</para>
+</answer>
 </qandaentry>
 
 <qandaentry>
@@ -376,6 +450,9 @@ NG?</para></question>
 <question><para>
 What is the relationship between RELAX/TREX and RELAX NG
 </para></question>
+<answer><para>
+	In short, RELAX (to be precise, RELAX Core) and TREX are parents of RELAX NG.
+</para></answer>
 </qandaentry>
 
 <!-- template
