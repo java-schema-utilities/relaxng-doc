@@ -6,7 +6,10 @@
 <!ATTLIST qandaentry id ID #IMPLIED>
 ]>
 <article class="faq">
-<title>Frequently Asked Questions about RELAX NG</title>
+<articleinfo>
+	<title>Frequently Asked Questions about RELAX NG</title>
+	<releaseinfo>$Revision: 1.5 $</releaseinfo>
+</articleinfo>
 
 <qandaset>
 
